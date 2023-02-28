@@ -102,7 +102,8 @@ class GBFS(BestSearchStrategy):
   def search(self, g: Graph, src: int, dst: int) -> tuple:
     expanded = [] # list of expanded vertices in the traversal order
     path = [] # path from src to dst
-
+    if src not in g.AL or dst not in g.AL:
+      return expanded, path
     queue = [(g.H[src], src)]
     visited = {src: None}
 
@@ -128,7 +129,8 @@ class AStar(BestSearchStrategy):
   def search(self, g: Graph, src: int, dst: int) -> tuple:
     expanded = [] # list of expanded vertices in the traversal order
     path = [] # path from src to dst
-
+    if src not in g.AL or dst not in g.AL:
+      return expanded, path
     queue = [(g.H[src], src)]
     visited = {src: None}
     cost = {src: 0}
